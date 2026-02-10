@@ -4,8 +4,8 @@ import { CODE_SNIPPETS } from "../constants";
 
 export const scanCodeForVulnerabilities = async (code: string) => {
   try {
-    // Initializing with process.env.API_KEY directly as per guidelines
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    // Initializing with process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' directly as per guidelines
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' });
 
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -40,7 +40,7 @@ export const scanCodeForVulnerabilities = async (code: string) => {
     console.error("Gemini Scan Error:", error);
     return {
       vulnerabilities: [],
-      summary: "فشل الاتصال بمحرك الذكاء الاصطناعي."
+      summary: "ÙØ´Ù Ø§ÙØ§ØªØµØ§Ù Ø¨ÙØ­Ø±Ù Ø§ÙØ°ÙØ§Ø¡ Ø§ÙØ§ØµØ·ÙØ§Ø¹Ù."
     };
   }
 };
@@ -48,8 +48,8 @@ export const scanCodeForVulnerabilities = async (code: string) => {
 // Added scanHTTPRequest to resolve the export error in HTTPScanner.tsx
 export const scanHTTPRequest = async (request: string) => {
   try {
-    // Initializing with process.env.API_KEY directly as per guidelines
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    // Initializing with process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' directly as per guidelines
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' });
 
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -84,7 +84,7 @@ export const scanHTTPRequest = async (request: string) => {
     console.error("Gemini HTTP Scan Error:", error);
     return {
       vulnerabilities: [],
-      summary: "حدث خطأ أثناء تحليل حزم البيانات عبر الذكاء الاصطناعي."
+      summary: "Ø­Ø¯Ø« Ø®Ø·Ø£ Ø£Ø«ÙØ§Ø¡ ØªØ­ÙÙÙ Ø­Ø²Ù Ø§ÙØ¨ÙØ§ÙØ§Øª Ø¹Ø¨Ø± Ø§ÙØ°ÙØ§Ø¡ Ø§ÙØ§ØµØ·ÙØ§Ø¹Ù."
     };
   }
 };
